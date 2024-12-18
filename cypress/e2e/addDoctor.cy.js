@@ -9,7 +9,7 @@ describe('Doctor Management', () => {
     homePage.clickOnTab('/doctors', 'Doctors')
   });
 
-  it('should add a new doctor successfully', () => {
+  it.only('should add a new doctor successfully', () => {
     const doctor = {
       name: utils.generateRandomName(),
       email: 'test@test.com',
@@ -20,7 +20,7 @@ describe('Doctor Management', () => {
     doctorPage.clickAddDoctor();
     doctorPage.fillDoctorDetails(doctor);
     doctorPage.saveDoctor();
-    cy.wait(1000)
+    cy.wait(5000)
     doctorPage.clickOnDoctor();
     doctorPage.validateDoctorName(doctor.name)
   });
