@@ -23,7 +23,7 @@ class DoctorPage {
     }
 
     clickOnDoctor(){
-        cy.get('.e-cards.specialist-item').last().click()
+        cy.get('.e-cards.specialist-item').last().click({force : true})
     }
 
     validateDoctorName(doctorName){

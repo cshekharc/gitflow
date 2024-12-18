@@ -20,6 +20,7 @@ describe('Doctor Management', () => {
     doctorPage.clickAddDoctor();
     doctorPage.fillDoctorDetails(doctor);
     doctorPage.saveDoctor();
+    cy.wait(1000)
     doctorPage.clickOnDoctor();
     doctorPage.validateDoctorName(doctor.name)
   });
