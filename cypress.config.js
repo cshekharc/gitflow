@@ -23,7 +23,7 @@ module.exports = defineConfig({
       userName: "velocity11",
       password: "velocity11"
     },
-    baseUrl: "https://automationteststore.com/",
+    baseUrl: "https://ej2.syncfusion.com/showcase/angular/appointmentplanner/#/dashboard",
     watchForFileChanges: false,
     defaultCommandTimeout: 10000,
     video: false,
