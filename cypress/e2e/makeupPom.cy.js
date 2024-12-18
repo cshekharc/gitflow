@@ -1,5 +1,5 @@
-import Makeup from "./pageObject/makeup";
-import Login from "./pageObject/login";
+import Makeup from "./pagesObject/makeup"
+import Login from "./pagesObject/login"
 
 const makeup = new Makeup()
 const login = new Login()

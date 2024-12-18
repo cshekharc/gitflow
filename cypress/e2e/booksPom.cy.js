@@ -1,5 +1,5 @@
-import Books from "./pageObject/books";
-import Login from "./pageObject/login";
+import Books from "./pagesObject/books";
+import Login from "./pagesObject/login";
 
 const login = new Login()
 const books = new Books()

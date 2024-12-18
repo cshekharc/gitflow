@@ -1,4 +1,4 @@
-import Login from "./pageObject/login";
+import Login from "./pagesObject/login";
 
 const login = new Login()
 
