@@ -1,0 +1,47 @@
+name: End-to-end tests
+on: [push, pull_request]
+
+jobs:
+  cypress-chrome:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Cypress on Chrome
+        run: npm run cy:chrome
+
+  cypress-firefox:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Cypress on Firefox
+        run: npm run cy:firefox
+
+  cypress-report:
+    needs: [cypress-chrome, cypress-firefox]
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Cypress and generate Mochawesome report
+        run: npx cypress run
+
+      - name: Upload Mochawesome report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with: 
+          name: cy-report
+          path: cypress/reports/html
