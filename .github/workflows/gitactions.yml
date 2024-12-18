@@ -27,7 +27,6 @@ jobs:
         run: npm run cy:firefox
 
   cypress-report:
-    needs: [cypress-chrome, cypress-firefox]
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout repository
