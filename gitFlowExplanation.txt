@@ -1,0 +1,77 @@
+This YAML file configures a GitHub Actions workflow to automate Cypress end-to-end tests for a project. Below is a breakdown of the code:
+
+1. Workflow Metadata
+
+name: End-to-end tests
+on: [push, pull_request]
+name: Sets the name of the workflow as "End-to-end tests."
+on: Defines the trigger events for the workflow:
+push: Workflow runs when changes are pushed to the repository.
+pull_request: Workflow runs when a pull request is opened or updated.
+
+2. Jobs
+2.1 cypress-chrome Job
+
+jobs:
+  cypress-chrome:
+    runs-on: ubuntu-22.04
+jobs: Contains individual tasks (or jobs) to be executed.
+cypress-chrome: A job to run Cypress tests in Chrome browser.
+runs-on: Specifies the environment where the job runs. Here, it's an Ubuntu 22.04 virtual machine.
+Steps in cypress-chrome:
+
+Checkout Repository
+
+- name: Checkout repository
+  uses: actions/checkout@v4
+Uses GitHub's checkout action to pull the repository's code.
+
+Install Dependencies
+
+- name: Install dependencies
+  run: npm install
+Installs all required dependencies listed in the package.json file.
+
+Run Cypress on Chrome
+
+- name: Run Cypress on Chrome
+  run: npm run cy:chrome
+Executes the Cypress test suite configured for Chrome browser using a custom script (cy:chrome) defined in the package.json.
+
+2.2 cypress-report Job
+
+  cypress-report:
+    runs-on: ubuntu-22.04
+Similar setup to cypress-chrome but focuses on generating and uploading a test report.
+Steps in cypress-report:
+
+Checkout Repository
+Same as above.
+
+Install Dependencies
+Same as above.
+
+Run Cypress and Generate Report
+
+- name: Run Cypress and generate Mochawesome report
+  run: npx cypress run
+Runs Cypress tests directly using the npx cypress run command.
+Assumes Mochawesome (a reporting plugin) is integrated in the Cypress setup to generate an HTML test report.
+Upload Report
+
+- name: Upload Mochawesome report
+  uses: actions/upload-artifact@v4
+  if: always()
+  with:
+    name: cy-report
+    path: cypress/reports/html
+Uses GitHub's upload-artifact action to save the test report (located at cypress/reports/html) as an artifact.
+if: always() ensures the report is uploaded even if the tests fail.
+
+Summary
+Purpose: Automate Cypress tests in CI/CD pipelines.
+Workflow:
+Run tests on Chrome.
+(Optional) Run tests on Firefox (commented out).
+Generate and upload a Mochawesome report for test results.
+Artifacts: The report is uploaded to GitHub Actions for later review.

@@ -5,11 +5,11 @@ import { homePage } from './pages/homePage';
 
 describe('Doctor Management', () => {
   beforeEach(() => {
-    doctorPage.visit();
+    utils.visit();
     homePage.clickOnTab('/doctors', 'Doctors')
   });
 
-  it.only('should add a new doctor successfully', () => {
+  it('should add a new doctor successfully', () => {
     const doctor = {
       name: utils.generateRandomName(),
       email: 'test@test.com',

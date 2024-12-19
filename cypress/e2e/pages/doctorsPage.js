@@ -1,7 +1,4 @@
 class DoctorPage {
-    visit() {
-        cy.visit('/');
-    }
 
     clickAddDoctor() {
         cy.get('.specialization-types .e-normal').click();
