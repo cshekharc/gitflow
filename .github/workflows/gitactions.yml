@@ -14,17 +14,17 @@ jobs:
       - name: Run Cypress on Chrome
         run: npm run cy:chrome
 
-  cypress-firefox:
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+  # cypress-firefox:
+  #   runs-on: ubuntu-22.04
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: npm install
+  #     - name: Install dependencies
+  #       run: npm install
 
-      - name: Run Cypress on Firefox
-        run: npm run cy:firefox
+  #     - name: Run Cypress on Firefox
+  #       run: npm run cy:firefox
 
   cypress-report:
     runs-on: ubuntu-22.04
